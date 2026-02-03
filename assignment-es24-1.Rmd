@@ -1,0 +1,36 @@
+---
+title: "進化社会学課題1"
+author: "工科太郎(本名に書き換えること)"
+date: "`r format(Sys.Date(),'%Y年%m月%d日')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 課題の内容
+
+講義で説明したように、誘導された変異のモデルの差分方程式の解析解は以下で与えられます。
+
+$$
+\tag{2.4}
+p_t = 1 - (1-\mu)^t (1-p_0)
+$$
+
+A) 横軸を$\mu$、縦軸を解析解(2.4)の値とするグラフを描きなさい。ただし、初期値は$p_0=0$、世代数を$t=10$、$\mu$(横軸)の範囲は$0\le \mu \le 1$、縦軸の範囲は$0 \le p_t \le 1$とする。
+
+```{r assignment-1-A}
+# ここにコードを書く
+p <- function(mu,p0,t) {
+  return(1-((1-mu)^t)*(1-p0))
+}
+curve(p(x,0,10),xlim=c(0,1),ylim=c(0,1),xlab='mu',ylab='p_10')
+```
+
+B) 同様に、横軸を$p_0$、縦軸を解析解(2.4)の値とするグラフを描きなさい。ただし、初期値の範囲は$0 \le p_0 \le 1$、縦軸の範囲は$0 \le p_t \le 1$、世代数を$t=10$、$\mu = 0.1$とする。
+
+```{r assignment-1-B}
+# ここにコードを書く
+curve(p(0.1,x,10),xlim=c(0,1),ylim=c(0,1),xlab='p_0',ylab='p_10')
+```
